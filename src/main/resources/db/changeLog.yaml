@@ -1,0 +1,22 @@
+# Liquibase database schema change file
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Jaroslav Abraham
+      changes:
+        - createTable:
+            tableName: mykotlinentity
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: field
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+        - addPrimaryKey:
+            tableName: mykotlinentity
+            columnNames: id

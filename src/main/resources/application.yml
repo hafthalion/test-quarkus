@@ -1,0 +1,10 @@
+greeting:
+  message: "Hi"
+
+quarkus:
+  datasource:
+    devservices:
+      port: 5432
+  liquibase:
+    change-log: db/changeLog.yaml
+    migrate-at-start: true
