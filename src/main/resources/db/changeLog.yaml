@@ -5,7 +5,7 @@ databaseChangeLog:
       author: Jaroslav Abraham
       changes:
         - createTable:
-            tableName: mykotlinentity
+            tableName: greetingentity
             columns:
               - column:
                   name: id
@@ -13,10 +13,24 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: field
+                  name: greeting
                   type: varchar(255)
                   constraints:
                     nullable: false
         - addPrimaryKey:
-            tableName: mykotlinentity
+            tableName: greetingentity
             columnNames: id
+
+  - changeSet:
+      id: 2
+      author: Jaroslav Abraham
+      changes:
+        - insert:
+            tableName: greetingentity
+            columns:
+              - column:
+                  name: id
+                  value: "1"
+              - column:
+                  name: greeting
+                  value: "How are you?"
