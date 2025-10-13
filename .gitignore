@@ -1,5 +1,6 @@
 # Gradle
 .gradle/
+.kotlin
 build/
 
 # Eclipse
@@ -9,7 +10,7 @@ build/
 bin/
 
 # IntelliJ
-.idea
+#.idea
 *.ipr
 *.iml
 *.iws
