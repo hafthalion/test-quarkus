@@ -1,4 +1,4 @@
-package com.hafnium
+package com.hafnium.test.quarkus
 
 import jakarta.persistence.Entity
 import jakarta.persistence.Id

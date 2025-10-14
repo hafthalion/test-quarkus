@@ -1,4 +1,4 @@
-package com.hafnium
+package com.hafnium.test.quarkus
 
 import jakarta.inject.Inject
 import jakarta.ws.rs.GET
