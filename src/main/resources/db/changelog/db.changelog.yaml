@@ -1,0 +1,4 @@
+# Liquibase database schema main change file
+databaseChangeLog:
+  - includeAll:
+      path: db/changelog/features

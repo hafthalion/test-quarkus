@@ -7,6 +7,8 @@ quarkus:
       port: 5432
   hibernate-orm:
     physical-naming-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategySnakeCaseImpl
+    schema-management:
+      strategy: validate
   liquibase:
-    change-log: db/changeLog.yaml
+    change-log: db/changelog/db.changelog.yaml
     migrate-at-start: true
