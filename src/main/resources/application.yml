@@ -5,6 +5,8 @@ quarkus:
   datasource:
     devservices:
       port: 5432
+  hibernate-orm:
+    physical-naming-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategySnakeCaseImpl
   liquibase:
     change-log: db/changeLog.yaml
     migrate-at-start: true

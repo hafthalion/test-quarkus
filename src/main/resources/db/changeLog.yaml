@@ -5,7 +5,7 @@ databaseChangeLog:
       author: Jaroslav Abraham
       changes:
         - createTable:
-            tableName: greetingentity
+            tableName: greeting_entity
             columns:
               - column:
                   name: id
@@ -18,7 +18,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
         - addPrimaryKey:
-            tableName: greetingentity
+            tableName: greeting_entity
             columnNames: id
 
   - changeSet:
@@ -26,7 +26,7 @@ databaseChangeLog:
       author: Jaroslav Abraham
       changes:
         - insert:
-            tableName: greetingentity
+            tableName: greeting_entity
             columns:
               - column:
                   name: id
