@@ -9,6 +9,7 @@ class GreetingService @Inject constructor(
     val greetingRepository: GreetingRepository,
 ) {
     fun greeting(name: String): String {
-        return "${greetingConfig.message()} $name. ${greetingRepository.findById(1).get().greeting}"
+        val greeting = greetingRepository.findById(1).get().greeting
+        return "${greetingConfig.message} $name. $greeting"
     }
 }

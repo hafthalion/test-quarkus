@@ -15,4 +15,13 @@ class GreetingResourceTest {
             .statusCode(200)
             .body(`is`("Hello from Quarkus REST"))
     }
+
+    @Test
+    fun testGreetingEndpoint() {
+        given()
+            .`when`().get("/hello/greeting/tester")
+            .then()
+            .statusCode(200)
+            .body(`is`("Hi tester. How are you?"))
+    }
 }

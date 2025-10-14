@@ -12,14 +12,14 @@ class GreetingResource @Inject constructor(
 ) {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    @Path("/greeting/{name}")
-    fun greeting(name: String): String {
-        return greetingService.greeting(name)
+    fun hello(): String {
+        return "Hello from Quarkus REST"
     }
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    fun hello(): String {
-        return "Hello from Quarkus REST"
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/greeting/{name}")
+    fun greeting(name: String): String {
+        return greetingService.greeting(name)
     }
 }
