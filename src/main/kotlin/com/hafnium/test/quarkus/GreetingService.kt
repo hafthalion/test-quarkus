@@ -10,8 +10,9 @@ class GreetingService @Inject constructor(
     val greetingRepository: GreetingRepository,
 ) {
     @Transactional
-    fun greeting(name: String): String {
-        val greeting = greetingRepository.findById(1)?.greeting ?: "Hello quarkus world!"
-        return "${greetingConfig.message()} $name. $greeting"
+    fun greeting(name: String): Greeting {
+        val greeting = greetingRepository.findById(1)?.greeting ?: "Hello quarkus!"
+
+        return Greeting(name, greeting, "${greetingConfig.addressing()} $name. $greeting")
     }
 }

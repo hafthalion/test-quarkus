@@ -16,7 +16,7 @@ class GreetingServiceTest {
 
     @Test
     fun `should generate greeting`() {
-        whenever(greetingConfig.message()).thenReturn("Dear")
+        whenever(greetingConfig.addressing()).thenReturn("Dear")
         whenever(greetingRepository.findById(1)).thenReturn(
             GreetingEntity(
                 id = 1,
@@ -26,16 +26,16 @@ class GreetingServiceTest {
 
         val greeting = greetingService.greeting("Tester")
 
-        assertThat(greeting).isEqualTo("Dear Tester. Hello world!")
+        assertThat(greeting).isEqualTo(Greeting("Tester", "Hello world!", "Dear Tester. Hello world!"))
     }
 
     @Test
     fun `should generate default greeting`() {
-        whenever(greetingConfig.message()).thenReturn("Dear")
+        whenever(greetingConfig.addressing()).thenReturn("Dear")
         whenever(greetingRepository.findById(1)).thenReturn(null)
 
         val greeting = greetingService.greeting("Tester")
 
-        assertThat(greeting).isEqualTo("Dear Tester. Hello quarkus world!")
+        assertThat(greeting).isEqualTo(Greeting("Tester", "Hello quarkus!", "Dear Tester. Hello quarkus!"))
     }
 }

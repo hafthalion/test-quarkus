@@ -19,7 +19,7 @@ class GreetingResource @Inject constructor(
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/greeting/{name}")
-    fun greeting(name: String): String {
+    fun greeting(name: String): Greeting {
         return greetingService.greeting(name)
     }
 }

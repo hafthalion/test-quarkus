@@ -1,5 +1,5 @@
 greeting:
-  message: "Hi"
+  addressing: "Hi"
 
 quarkus:
   datasource:
