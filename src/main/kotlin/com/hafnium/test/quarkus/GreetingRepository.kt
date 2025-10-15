@@ -1,8 +1,8 @@
 package com.hafnium.test.quarkus
 
-import org.springframework.data.jpa.repository.JpaRepository
-import org.springframework.stereotype.Repository
+import io.quarkus.hibernate.orm.panache.kotlin.PanacheRepositoryBase
+import jakarta.enterprise.context.ApplicationScoped
 
-@Repository
-interface GreetingRepository : JpaRepository<GreetingEntity, Int> {
+@ApplicationScoped
+class GreetingRepository : PanacheRepositoryBase<GreetingEntity, Int> {
 }
