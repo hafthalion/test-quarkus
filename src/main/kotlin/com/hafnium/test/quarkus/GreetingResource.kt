@@ -10,7 +10,7 @@ import jakarta.ws.rs.core.MediaType
 
 @Path("hello")
 class GreetingResource @Inject constructor(
-    val greetingService: GreetingService,
+    private val greetingService: GreetingService,
 ) {
     @GET
     @Produces(MediaType.TEXT_PLAIN)

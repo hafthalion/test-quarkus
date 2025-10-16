@@ -6,8 +6,8 @@ import jakarta.transaction.Transactional
 
 @ApplicationScoped
 class GreetingService @Inject constructor(
-    val greetingConfig: GreetingConfig,
-    val greetingRepository: GreetingRepository,
+    private val greetingConfig: GreetingConfig,
+    private val greetingRepository: GreetingRepository,
 ) {
     @Transactional
     fun greeting(name: String): Greeting {
