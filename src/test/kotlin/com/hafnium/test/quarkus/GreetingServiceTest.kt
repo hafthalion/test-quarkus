@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.junit.jupiter.MockitoExtension
+import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
@@ -37,5 +38,15 @@ class GreetingServiceTest {
         val greeting = greetingService.greeting("Tester")
 
         assertThat(greeting).isEqualTo(Greeting("Tester", "Hello quarkus!", "Dear Tester. Hello quarkus!"))
+    }
+
+    @Test
+    fun `should create greeting entity`() {
+        whenever(greetingRepository.findById(1)).thenReturn(null)
+        whenever(greetingRepository.persist(any<GreetingEntity>())).then { }
+
+        val greeting = greetingService.changeGreeting(1, "Howdy!")
+
+        assertThat(greeting).isEqualTo(GreetingEntity(1, "Howdy!"))
     }
 }

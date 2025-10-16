@@ -2,11 +2,13 @@ package com.hafnium.test.quarkus
 
 import jakarta.inject.Inject
 import jakarta.ws.rs.GET
+import jakarta.ws.rs.POST
 import jakarta.ws.rs.Path
 import jakarta.ws.rs.Produces
+import jakarta.ws.rs.QueryParam
 import jakarta.ws.rs.core.MediaType
 
-@Path("/hello")
+@Path("hello")
 class GreetingResource @Inject constructor(
     val greetingService: GreetingService,
 ) {
@@ -18,8 +20,15 @@ class GreetingResource @Inject constructor(
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/greeting/{name}")
+    @Path("greeting/{name}")
     fun greeting(name: String): Greeting {
         return greetingService.greeting(name)
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("greetings/{id}")
+    fun greetings(id: Int, @QueryParam("greeting") greeting: String): GreetingEntity {
+        return greetingService.changeGreeting(id, greeting)
     }
 }

@@ -15,4 +15,13 @@ class GreetingService @Inject constructor(
 
         return Greeting(name, greeting, "${greetingConfig.addressing()} $name. $greeting")
     }
+
+    @Transactional
+    fun changeGreeting(id: Int, greeting: String): GreetingEntity {
+        val greetingEntity = greetingRepository.findById(id) ?: GreetingEntity(id)
+        greetingEntity.greeting = greeting
+        greetingRepository.persist(greetingEntity)
+
+        return greetingEntity
+    }
 }
