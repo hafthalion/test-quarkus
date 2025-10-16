@@ -11,16 +11,16 @@ class GreetingService @Inject constructor(
 ) {
     @Transactional
     fun greeting(name: String): Greeting {
-        val greeting = greetingRepository.findById(1)?.greeting ?: "Hello quarkus!"
+        val greeting = greetingRepository.load(1)?.greeting ?: "Hello quarkus!"
 
         return Greeting(name, greeting, "${greetingConfig.addressing()} $name. $greeting")
     }
 
     @Transactional
     fun changeGreeting(id: Int, greeting: String): GreetingEntity {
-        val greetingEntity = greetingRepository.findById(id) ?: GreetingEntity(id)
+        val greetingEntity = greetingRepository.load(id) ?: GreetingEntity(id)
         greetingEntity.greeting = greeting
-        greetingRepository.persist(greetingEntity)
+        greetingRepository.save(greetingEntity)
 
         return greetingEntity
     }

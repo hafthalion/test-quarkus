@@ -18,7 +18,7 @@ class GreetingServiceTest {
     @Test
     fun `should generate greeting`() {
         whenever(greetingConfig.addressing()).thenReturn("Dear")
-        whenever(greetingRepository.findById(1)).thenReturn(
+        whenever(greetingRepository.load(1)).thenReturn(
             GreetingEntity(
                 id = 1,
                 greeting = "Hello world!",
@@ -33,7 +33,7 @@ class GreetingServiceTest {
     @Test
     fun `should generate default greeting`() {
         whenever(greetingConfig.addressing()).thenReturn("Dear")
-        whenever(greetingRepository.findById(1)).thenReturn(null)
+        whenever(greetingRepository.load(1)).thenReturn(null)
 
         val greeting = greetingService.greeting("Tester")
 
@@ -42,8 +42,8 @@ class GreetingServiceTest {
 
     @Test
     fun `should create greeting entity`() {
-        whenever(greetingRepository.findById(1)).thenReturn(null)
-        whenever(greetingRepository.persist(any<GreetingEntity>())).then { }
+        whenever(greetingRepository.load(1)).thenReturn(null)
+        whenever(greetingRepository.save(any<GreetingEntity>())).then { }
 
         val greeting = greetingService.changeGreeting(1, "Howdy!")
 

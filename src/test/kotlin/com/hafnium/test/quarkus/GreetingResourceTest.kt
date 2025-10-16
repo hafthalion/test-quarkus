@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test
 @QuarkusTest
 class GreetingResourceTest {
     @Test
-    fun testHelloEndpoint() {
+    fun `should say hello`() {
         given()
             .`when`().get("/hello")
             .then()
@@ -19,11 +19,20 @@ class GreetingResourceTest {
     }
 
     @Test
-    fun testGreetingEndpoint() {
+    fun `should greet me`() {
         given()
             .`when`().get("/hello/greeting/tester")
             .then()
             .statusCode(200)
             .body(matchesPattern("\\{.+tester.+\\}"))
+    }
+
+    @Test
+    fun `should set greeting message`() {
+        given()
+            .`when`().post("/hello/greetings/123?greeting=Changed Hello")
+            .then()
+            .statusCode(200)
+            .body(matchesPattern("\\{.+123.+Changed Hello.+\\}"))
     }
 }
