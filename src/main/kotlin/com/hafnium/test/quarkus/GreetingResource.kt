@@ -1,6 +1,8 @@
 package com.hafnium.test.quarkus
 
 import jakarta.inject.Inject
+import jakarta.validation.constraints.NotBlank
+import jakarta.validation.constraints.Size
 import jakarta.ws.rs.GET
 import jakarta.ws.rs.POST
 import jakarta.ws.rs.Path
@@ -28,7 +30,10 @@ class GreetingResource @Inject constructor(
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Path("greetings/{id}")
-    fun greetings(id: Int, @QueryParam("greeting") greeting: String): GreetingEntity {
+    fun greetings(
+        id: Int,
+        @QueryParam("greeting") @NotBlank @Size(max = 255) greeting: String,
+    ): GreetingEntity {
         return greetingService.changeGreeting(id, greeting)
     }
 }
